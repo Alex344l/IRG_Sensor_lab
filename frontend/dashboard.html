@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sensor Lab - Dashboard</title>
+
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         Dashboard Header
+    ========================== -->
+
+    <header class="dashboard-header">
+
+        <div>
+            <h1>SENSOR LAB</h1>
+            <p>Route Analysis Dashboard</p>
+        </div>
+
+        <div class="route-name">
+            <span>ROUTE</span>
+            <strong id="routeName">Loading...</strong>
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         Main Dashboard
+    ========================== -->
+
+    <main class="dashboard">
+
+
+        <!-- =========================
+             Metrics
+        ========================== -->
+
+        <section class="metrics">
+
+            <div class="metric-card">
+
+                <span class="metric-label">DISTANCE</span>
+
+                <h2 id="distance">--</h2>
+
+                <p>miles</p>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span class="metric-label">TOTAL TIME</span>
+
+                <h2 id="totalTime">--</h2>
+
+                <p>minutes</p>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span class="metric-label">AVG SPEED</span>
+
+                <h2 id="averageSpeed">--</h2>
+
+                <p>mph</p>
+
+            </div>
+
+
+            <div class="metric-card">
+
+                <span class="metric-label">BEARING</span>
+
+                <h2 id="bearing">--</h2>
+
+                <p>direction</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Speed Graph
+        ========================== -->
+
+        <section class="dashboard-panel speed-panel">
+
+            <div class="panel-header">
+
+                <h2>Speed Over Time</h2>
+
+                <span>RUN ANALYSIS</span>
+
+            </div>
+
+
+            <div id="speedGraph">
+
+                <canvas id="speedChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Lower Dashboard Panels
+        ========================== -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- Route -->
+
+            <div class="dashboard-panel">
+
+                <div class="panel-header">
+
+                    <h2>Route</h2>
+
+                </div>
+
+
+                <div id="routeMap">
+
+                    <canvas id="routeMapGraph"></canvas>
+
+                </div>
+
+            </div>
+
+
+            <!-- Elevation -->
+
+            <div class="dashboard-panel">
+
+                <div class="panel-header">
+
+                    <h2>Elevation</h2>
+
+                </div>
+
+
+                <div id="elevationGraph">
+
+                    <canvas id="elevationChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JavaScript
+    ========================== -->
+
+    <!-- Chart.js must load BEFORE dashboard.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="/static/js/dashboard.js"></script>
+
+</body>
+
+</html>
