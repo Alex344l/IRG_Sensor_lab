@@ -92,23 +92,23 @@
 
 
         <!-- =========================
-             Speed Graph
+             Route Visualization
         ========================== -->
 
-        <section class="dashboard-panel speed-panel">
+        <section class="dashboard-panel route-panel">
 
             <div class="panel-header">
 
-                <h2>Speed Over Time</h2>
+                <h2>Route</h2>
 
-                <span>RUN ANALYSIS</span>
+                <span>GPS TRACK</span>
 
             </div>
 
 
-            <div id="speedGraph">
+            <div id="routeMap">
 
-                <canvas id="speedChart"></canvas>
+                <canvas id="routeMapGraph"></canvas>
 
             </div>
 
@@ -122,20 +122,22 @@
         <section class="dashboard-grid">
 
 
-            <!-- Route -->
+            <!-- Speed -->
 
             <div class="dashboard-panel">
 
                 <div class="panel-header">
 
-                    <h2>Route</h2>
+                    <h2>Speed Over Time</h2>
+
+                    <span>RUN ANALYSIS</span>
 
                 </div>
 
 
-                <div id="routeMap">
+                <div id="speedGraph">
 
-                    <canvas id="routeMapGraph"></canvas>
+                    <canvas id="speedChart"></canvas>
 
                 </div>
 
@@ -149,6 +151,8 @@
                 <div class="panel-header">
 
                     <h2>Elevation</h2>
+
+                    <span>TERRAIN</span>
 
                 </div>
 
@@ -166,12 +170,30 @@
 
     </main>
 
+    <footer class="dashboard-footer">
+
+        <div class="footer-left">
+            <strong>SENSOR LAB</strong>
+            <span>GPS Route Analysis</span>
+        </div>
+
+        <div class="footer-center">
+            <span>Sensor Lab v0.1</span>
+        </div>
+
+        <div class="footer-right">
+            <span>Python • FastAPI • JavaScript</span>
+        </div>
+
+    </footer>
+
 
     <!-- =========================
          JavaScript
     ========================== -->
 
     <!-- Chart.js must load BEFORE dashboard.js -->
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="/static/js/dashboard.js"></script>

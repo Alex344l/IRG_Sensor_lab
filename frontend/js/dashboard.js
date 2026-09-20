@@ -161,62 +161,166 @@ async function loadDashboard() {
         }
     });
 
-    
     const latitude = result.route.latitude;
-    const longitude = result.route.longitude;
+const longitude = result.route.longitude;
 
-    const routeGraph = document.getElementById("routeMapGraph");
+const routeGraph = document.getElementById("routeMapGraph");
 
-    const routeData = longitude.map((lon, index) => ({
-        x: lon,
-        y: latitude[index]
-    }));
+// ------------------------------------
+// Convert GPS coordinates to meters
+// relative to the starting point
+// ------------------------------------
 
-    new Chart(routeGraph, {
+const startLat = latitude[0];
+const startLon = longitude[0];
 
-        type: "scatter",
+const earthRadius = 6371000;
 
-        data: {
-            datasets: [{
+const routeData = latitude.map((lat, index) => {
+
+    const lon = longitude[index];
+
+    const x =
+        (lon - startLon) *
+        Math.cos(startLat * Math.PI / 180) *
+        (Math.PI / 180) *
+        earthRadius;
+
+    const y =
+        (lat - startLat) *
+        (Math.PI / 180) *
+        earthRadius;
+
+    return {
+        x: x,
+        y: y
+    };
+});
+
+// ------------------------------------
+// Start and finish points
+// ------------------------------------
+
+const startPoint = routeData[0];
+const finishPoint = routeData[routeData.length - 1];
+
+// ------------------------------------
+// Route chart
+// ------------------------------------
+
+new Chart(routeGraph, {
+
+    type: "scatter",
+
+    data: {
+
+        datasets: [
+
+            // Main route
+            {
                 label: "Route",
+
                 data: routeData,
+
                 showLine: true,
-                tension: 0.2,
+
+                tension: 0.15,
+
                 pointRadius: 0,
+
+                borderWidth: 3
+            },
+
+            // Start
+            {
+                label: "Start",
+
+                data: [startPoint],
+
+                pointRadius: 7,
+
+                pointHoverRadius: 9,
+
+                showLine: false,
+
                 borderWidth: 2
-            }]
+            },
+
+            // Finish
+            {
+                label: "Finish",
+
+                data: [finishPoint],
+
+                pointRadius: 7,
+
+                pointHoverRadius: 9,
+
+                showLine: false,
+
+                borderWidth: 2
+            }
+        ]
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        interaction: {
+            mode: "nearest",
+            intersect: false
         },
 
-        options: {
+        scales: {
 
-            responsive: true,
-            maintainAspectRatio: false,
-
-            scales: {
-
-                x: {
-                    title: {
-                        display: true,
-                        text: "Longitude"
-                    }
+            x: {
+                title: {
+                    display: true,
+                    text: "East / West (meters)"
                 },
 
-                y: {
-                    title: {
-                        display: true,
-                        text: "Latitude"
-                    }
+                grid: {
+                    display: true
                 }
             },
 
-            plugins: {
+            y: {
+                title: {
+                    display: true,
+                    text: "North / South (meters)"
+                },
 
-                legend: {
-                    display: false
+                grid: {
+                    display: true
+                }
+            }
+        },
+
+        plugins: {
+
+            legend: {
+                display: true
+            },
+
+            tooltip: {
+
+                callbacks: {
+
+                    label: function(context) {
+
+                        const x = context.parsed.x;
+                        const y = context.parsed.y;
+
+                        return `X: ${x.toFixed(1)} m, Y: ${y.toFixed(1)} m`;
+                    }
                 }
             }
         }
-    });
+    }
+});
 }
 
 

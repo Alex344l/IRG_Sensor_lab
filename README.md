@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Sensor Lab
 
 Sensor Lab is a full-stack sensor and route analysis project built with **Python, FastAPI, JavaScript, and data visualization tools**.

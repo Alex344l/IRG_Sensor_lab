@@ -34,11 +34,21 @@ class RouteRequest(BaseModel):
 # ---------- ROUTE DATA ----------
 
 routes = {
-    "Lakeside Run": "data/route_1_lakeside.csv",
-    "Riverside Run": "data/route_2_riverside.csv",
-    "Neighborhood Run": "data/route_3_neighborhood.csv",
-    "Park Loop": "data/route_4_park_loop.csv",
-    "Long Loop": "data/route_5_long_loop.csv"
+    "Lakeside Run": "sensor_data/route_1_lakeside.csv",
+    "Riverside Run": "sensor_data/route_2_riverside.csv",
+    "Neighborhood Run": "sensor_data/route_3_neighborhood.csv",
+    "Park Loop": "sensor_data/route_4_park_loop.csv",
+    "Long Loop": "sensor_data/route_5_long_loop.csv",
+    "Hilltop Run": "sensor_data/route_6_hilltop_run.csv",
+    "Forest Trail": "sensor_data/route_7_forest_trail.csv",
+    "Creekside Run": "sensor_data/route_8_creekside_run.csv",
+    "Campus Loop": "sensor_data/route_9_campus_loop.csv",
+    "Reservoir Run": "sensor_data/route_10_reservoir_run.csv",
+    "Downtown Loop": "sensor_data/route_11_downtown_loop.csv",
+    "Meadow Run": "sensor_data/route_12_meadow_run.csv",
+    "Mountain View": "sensor_data/route_13_mountain_view.csv",
+    "Lakeshore Loop": "sensor_data/route_14_lakeshore_loop.csv",
+    "Long Trail": "sensor_data/route_15_long_trail.csv"
 }
 
 
